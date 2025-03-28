@@ -50,7 +50,7 @@ export default function Login() {
         password: data.password,
       });
 
-      navigate("/dashboard");
+      navigate("/home");
     } catch (err) {
       // Gestion des erreurs avec typage approprié
       if (err instanceof AxiosError) {

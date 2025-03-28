@@ -1,21 +1,29 @@
 import { Link, useLocation } from "react-router-dom";
 import { Logo } from "../ui/Logo";
-import { X, LayoutDashboard, Users, BarChart2, Ticket } from "lucide-react";
+// import { X, LayoutDashboard, Users, BarChart2, Ticket } from "lucide-react";
+import { X } from "lucide-react";
 import { cn } from "@/utils/cn";
+import { ComponentType } from "react";
 
-const navigation = [
-  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Tickets", href: "/dashboard/tickets", icon: Ticket },
-  { name: "Agents", href: "/dashboard/agents", icon: Users },
-  { name: "Rapports", href: "/dashboard/reports", icon: BarChart2 },
-];
+// const navigation = [
+//   { name: "Acceuil", href: "/dashboard", icon: LayoutDashboard },
+//   { name: "Notes", href: "/dashboard/tickets", icon: Ticket },
+//   { name: "classe", href: "/dashboard/agents", icon: Users },
+//   { name: "Reclamation ", href: "/dashboard/reports", icon: BarChart2 },
+// ];
+interface NavigationItem {
+  name: string;
+  href: string;
+  icon: ComponentType<{ className?: string }>;
+}
 
 interface SidebarProps {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
+  navigation: NavigationItem[];
 }
 
-export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
+export function Sidebar({ isOpen, setIsOpen, navigation }: SidebarProps) {
   const location = useLocation();
 
   return (

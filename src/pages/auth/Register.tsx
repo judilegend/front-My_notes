@@ -72,7 +72,7 @@ export default function Register() {
         password_confirmation: data.password_confirmation,
         role: data.role,
       });
-      navigate("/dashboard");
+      navigate("/home");
     } catch (err: unknown) {
       setError(
         // err.response?.data?.message ||
