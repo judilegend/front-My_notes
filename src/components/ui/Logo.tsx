@@ -8,7 +8,7 @@ export const Logo = () => {
       transition={{ duration: 0.5 }}
       className="flex items-center gap-2"
     >
-      <div className="bg-primary p-2 rounded-lg">
+      <div className="bg-[#5B42F3] p-2 rounded-lg">
         <span className="text-white font-bold text-xl">MY</span>
       </div>
       <span className="text-2xl font-bold text-gray-800">Notes</span>

@@ -38,7 +38,7 @@ export function Sidebar({ isOpen, setIsOpen, navigation }: SidebarProps) {
 
       <div
         className={cn(
-          "fixed inset-y-0 left-0 z-50 w-64 bg-white transform transition-transform duration-300 ease-in-out lg:translate-x-0",
+          "fixed inset-y-0 top-2 left-3 z-50 w-64 h-[95vh]  shadow-full rounded-xl bg-white transform transition-transform duration-300 ease-in-out lg:translate-x-0",
           isOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >

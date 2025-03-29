@@ -12,7 +12,7 @@ export function Header({ toggleSidebar, user }: HeaderProps) {
   const { logout } = useAuth();
 
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-white px-3 mt-2  shadow-full ">
       <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4">
           <button className="lg:hidden" onClick={toggleSidebar}>

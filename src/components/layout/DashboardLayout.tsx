@@ -26,11 +26,11 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         setIsOpen={setSidebarOpen}
       />
 
-      <div className="lg:pl-64">
+      <div className="fixed w-full lg:pl-64">
         <Header toggleSidebar={() => setSidebarOpen(true)} user={user} />
 
         <main className="py-8">
-          <div className=" ">{children}</div>
+          <div className=" max-w-[1380px] mx-auto">{children}</div>
         </main>
       </div>
     </div>
