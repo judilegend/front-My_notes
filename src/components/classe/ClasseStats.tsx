@@ -15,7 +15,7 @@ export function ClasseStats({ classes }: ClasseStatsProps) {
 
   return (
     <div className="grid gap-4 md:grid-cols-3 mb-8">
-      <Card>
+      <Card className="bg-[#EBD18D] z-10">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">
             Total des Classes
@@ -27,7 +27,7 @@ export function ClasseStats({ classes }: ClasseStatsProps) {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="bg-[#af40ff] z-10">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Mentions</CardTitle>
           <GraduationCap className="h-4 w-4 text-muted-foreground" />
@@ -37,7 +37,7 @@ export function ClasseStats({ classes }: ClasseStatsProps) {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="bg-[#00ddeb] z-10">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Parcours</CardTitle>
           <BookOpen className="h-4 w-4 text-muted-foreground" />

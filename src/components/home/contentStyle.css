@@ -1,7 +1,7 @@
 /* From Uiverse.io by MikeAndrewDesigner */
 .e-card {
   /* margin: 100px auto; */
-  background: white;
+  background: #ebd18d;
   box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.1);
   position: relative;
   width: 100%;
@@ -12,8 +12,10 @@
 
 .abstract1 {
   position: absolute;
-  top: 0px;
+  top: 10px;
   right: 0px;
+  margin: auto;
+  padding: auto;
 }
 .abstract2 {
   position: absolute;

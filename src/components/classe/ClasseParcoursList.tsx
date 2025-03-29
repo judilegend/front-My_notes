@@ -20,7 +20,7 @@ export function ClasseParcoursList({ classes }: ClasseParcoursListProps) {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
       {Object.entries(parcoursByMention).map(([mention, parcours]) => (
-        <Card key={mention} className="overflow-hidden">
+        <Card key={mention} className="overflow-hidden bg-white">
           <CardHeader className="bg-primary/10">
             <CardTitle className="flex items-center text-lg">
               <BookOpen className="mr-2 h-5 w-5" />

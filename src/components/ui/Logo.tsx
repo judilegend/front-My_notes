@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
+interface LogoProps {
+  small?: boolean;
+}
 
-export const Logo = () => {
+export function Logo({ small = false }: LogoProps) {
+  if (small) {
+    return (
+      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-bold text-lg">
+        M
+      </div>
+    );
+  }
   return (
     <motion.div
       initial={{ scale: 0.8, opacity: 0 }}
@@ -14,4 +24,4 @@ export const Logo = () => {
       <span className="text-2xl font-bold text-gray-800">Notes</span>
     </motion.div>
   );
-};
+}

@@ -5,7 +5,7 @@ function ContentHome() {
     <section className="w-full mx-auto">
       <div className="e-card playing">
         <div className="image">
-          <img
+          {/* <img
             src="src/assets/image/abstract1.png"
             width={200}
             alt="abstract1"
@@ -16,6 +16,12 @@ function ContentHome() {
             width={200}
             alt="abstract2"
             className="abstract2"
+          /> */}
+          <img
+            src="src/assets/image/image-content.png"
+            width={600}
+            alt="abstract1"
+            className="abstract1"
           />
         </div>
         {/* <div className="wave"></div>

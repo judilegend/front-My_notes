@@ -26,7 +26,7 @@ export function ClasseCard({ classe, onEdit, onDelete }: ClasseCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="h-full">
+      <Card className="h-full bg-white border-2 border-primary/20">
         <CardHeader>
           <CardTitle className="text-lg font-bold">{classe.mention}</CardTitle>
           <CardDescription>{classe.parcours}</CardDescription>

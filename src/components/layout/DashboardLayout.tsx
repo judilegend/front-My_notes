@@ -13,24 +13,45 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const { user } = useAuth();
 
   const navigation = [
-    { name: "Acceuil", href: "/home", icon: LayoutDashboard },
-    { name: "Notes", href: "/note", icon: Ticket },
-    { name: "classe", href: "/classe", icon: Users },
-    { name: "Reclamation ", href: "/reclamation", icon: BarChart2 },
+    {
+      name: "Accueil",
+      href: "/home",
+      icon: LayoutDashboard,
+      description: "Tableau de bord principal",
+    },
+    {
+      name: "Notes",
+      href: "/note",
+      icon: Ticket,
+      description: "Gérer vos notes de cours",
+    },
+    {
+      name: "Classes",
+      href: "/classe",
+      icon: Users,
+      description: "Gérer les classes et parcours",
+    },
+    {
+      name: "Réclamations",
+      href: "/reclamation",
+      icon: BarChart2,
+      description: "Suivi des réclamations",
+    },
   ];
+
   return (
-    <div className=" h-screen bg-gray-100">
+    <div className="h-full bg-gray-100 dark:bg-gray-950">
       <Sidebar
         navigation={navigation}
         isOpen={sidebarOpen}
         setIsOpen={setSidebarOpen}
       />
 
-      <div className="w-full lg:pl-64">
+      <div className="lg:pl-64 transition-all duration-300 w-full">
         <Header toggleSidebar={() => setSidebarOpen(true)} user={user} />
 
-        <main className="py-8">
-          <div className=" max-w-[1380px] h-full mx-auto">{children}</div>
+        <main className="py-8 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1380px] mx-auto">{children}</div>
         </main>
       </div>
     </div>
