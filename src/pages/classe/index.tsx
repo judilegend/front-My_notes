@@ -179,7 +179,7 @@ const ClassePage = () => {
 
   return (
     <DashboardLayout>
-      <div className="container mx-auto py-8">
+      <div className=" mx-auto py-8">
         <div className="flex justify-between items-center mb-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
