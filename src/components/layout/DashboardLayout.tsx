@@ -14,9 +14,9 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
   const navigation = [
     { name: "Acceuil", href: "/home", icon: LayoutDashboard },
-    { name: "Notes", href: "/dashboard/tickets", icon: Ticket },
-    { name: "classe", href: "/dashboard/agents", icon: Users },
-    { name: "Reclamation ", href: "/dashboard/reports", icon: BarChart2 },
+    { name: "Notes", href: "/note", icon: Ticket },
+    { name: "classe", href: "/classe", icon: Users },
+    { name: "Reclamation ", href: "/reclamation", icon: BarChart2 },
   ];
   return (
     <div className="min-h-screen bg-gray-100">
