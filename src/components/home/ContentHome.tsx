@@ -2,15 +2,28 @@ import React from "react";
 import "./contentStyle.css";
 function ContentHome() {
   return (
-    <>
+    <section className="max-w-[1410px] mx-auto">
       <div className="e-card playing">
-        <div className="image"></div>
+        <div className="image">
+          <img
+            src="src/assets/image/abstract1.png"
+            width={200}
+            alt="abstract1"
+            className="abstract1"
+          />
+          <img
+            src="src/assets/image/abstract2.png"
+            width={200}
+            alt="abstract2"
+            className="abstract2"
+          />
+        </div>
+        {/* <div className="wave"></div>
         <div className="wave"></div>
-        <div className="wave"></div>
-        <div className="wave"></div>
+        <div className="wave"></div> */}
 
         <div className="infotop">
-          <svg
+          {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -33,12 +46,10 @@ function ContentHome() {
                 16.4783 14.8528C14.2136 14.8528 12.3781 16.6466 12.3781 18.8598C12.3781 19.3937 12.4861 19.9021 12.68
                 20.3676C11.9347 20.5316 11.1396 20.4203 10.4684 20.0413H10.4676Z"
             ></path>
-          </svg>
-          UI / EX Designer
-          <div className="name">MikeAndrewDesigner</div>
+          </svg> */}
         </div>
       </div>
-    </>
+    </section>
   );
 }
 

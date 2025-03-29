@@ -30,9 +30,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         <Header toggleSidebar={() => setSidebarOpen(true)} user={user} />
 
         <main className="py-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {children}
-          </div>
+          <div className=" ">{children}</div>
         </main>
       </div>
     </div>

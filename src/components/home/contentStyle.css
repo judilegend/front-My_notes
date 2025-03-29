@@ -1,15 +1,25 @@
 /* From Uiverse.io by MikeAndrewDesigner */
 .e-card {
-  margin: 100px auto;
-  background: transparent;
-  box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+  /* margin: 100px auto; */
+  background: white;
+  box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.1);
   position: relative;
-  width: 240px;
+  width: 100%;
   height: 330px;
   border-radius: 16px;
   overflow: hidden;
 }
 
+.abstract1 {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.abstract2 {
+  position: absolute;
+  /* top: 20px; */
+  bottom: 0px;
+}
 .wave {
   position: absolute;
   width: 540px;
@@ -18,7 +28,7 @@
   left: 0;
   top: 0;
   margin-left: -50%;
-  margin-top: -70%;
+  margin-top: -50%;
   background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
 }
 
