@@ -19,18 +19,18 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     { name: "Reclamation ", href: "/reclamation", icon: BarChart2 },
   ];
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className=" h-screen bg-gray-100">
       <Sidebar
         navigation={navigation}
         isOpen={sidebarOpen}
         setIsOpen={setSidebarOpen}
       />
 
-      <div className="fixed w-full lg:pl-64">
+      <div className="w-full lg:pl-64">
         <Header toggleSidebar={() => setSidebarOpen(true)} user={user} />
 
         <main className="py-8">
-          <div className=" max-w-[1380px] mx-auto">{children}</div>
+          <div className=" max-w-[1380px] h-full mx-auto">{children}</div>
         </main>
       </div>
     </div>

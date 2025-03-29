@@ -8,6 +8,8 @@ import { ClasseParcoursList } from "@/components/classe/ClasseParcoursList";
 import { Classe } from "@/types/classe";
 import { classeService } from "@/services/classeService";
 import { useToast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
+
 import {
   Dialog,
   DialogContent,
@@ -29,6 +31,10 @@ const ClassePage = () => {
   const [selectedMention, setSelectedMention] = useState("");
   const [activeTab, setActiveTab] = useState("classes");
   const { toast } = useToast();
+
+  const [selectedParcours, setSelectedParcours] = useState("");
+
+  const navigate = useNavigate();
   //delete classe
   const [classeToDelete, setClasseToDelete] = useState<Classe | null>(null);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -64,10 +70,21 @@ const ClassePage = () => {
       setClasseToDelete(null);
     }
   };
+
   useEffect(() => {
+    const token = localStorage.getItem("auth_token");
+    if (!token) {
+      toast({
+        title: "Accès refusé",
+        description: "Vous devez être connecté pour accéder à cette page",
+        variant: "destructive",
+      });
+      navigate("/login"); // Assurez-vous que cette route existe
+      return;
+    }
+    console.log(token);
     fetchClasses();
   }, []);
-
   const fetchClasses = async () => {
     try {
       setIsLoading(true);
@@ -159,12 +176,15 @@ const ClassePage = () => {
     const matchesMention = selectedMention
       ? classe.mention === selectedMention
       : true;
-    const matchesSearch = searchTerm
-      ? classe.parcours.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesParcours = selectedParcours
+      ? classe.parcours === selectedParcours
       : true;
-    return matchesMention && matchesSearch;
+    const matchesSearch = searchTerm
+      ? classe.parcours.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        classe.mention.toLowerCase().includes(searchTerm.toLowerCase())
+      : true;
+    return matchesMention && matchesParcours && matchesSearch;
   });
-
   // Extraire les mentions uniques pour le filtre
   const uniqueMentions = Array.from(new Set(classes.map((c) => c.mention)));
 
@@ -179,7 +199,7 @@ const ClassePage = () => {
 
   return (
     <DashboardLayout>
-      <div className=" mx-auto py-8">
+      <div className="h-full mx-auto ">
         <div className="flex justify-between items-center mb-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -229,13 +249,15 @@ const ClassePage = () => {
                     Parcours disponibles
                   </TabsTrigger>
                 </TabsList>
-                <TabsContent value="classes" className="mt-6">
+                <TabsContent value="classes" className="mt-0">
                   {/* Filtres */}
                   <ClasseFilter
                     searchTerm={searchTerm}
                     onSearchChange={setSearchTerm}
                     selectedMention={selectedMention}
                     onMentionChange={setSelectedMention}
+                    selectedParcours={selectedParcours}
+                    onParcoursChange={setSelectedParcours}
                     mentions={uniqueMentions}
                   />
 

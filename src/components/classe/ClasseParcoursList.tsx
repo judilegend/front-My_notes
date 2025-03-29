@@ -18,7 +18,7 @@ export function ClasseParcoursList({ classes }: ClasseParcoursListProps) {
   }, {} as Record<string, Set<string>>);
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
       {Object.entries(parcoursByMention).map(([mention, parcours]) => (
         <Card key={mention} className="overflow-hidden">
           <CardHeader className="bg-primary/10">

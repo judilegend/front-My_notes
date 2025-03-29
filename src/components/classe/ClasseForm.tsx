@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -20,6 +20,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Classe } from "@/types/classe";
+
+// Définition des mentions et parcours disponibles
+const MENTIONS_PARCOURS = {
+  "Intelligence Artificielle": ["GID", "OCC", "MDI"],
+  Informatique: ["GB", "IG", "ASR"],
+};
 
 const formSchema = z.object({
   mention: z
@@ -51,6 +57,34 @@ export function ClasseForm({
     },
   });
 
+  const [availableParcours, setAvailableParcours] = useState<string[]>([]);
+  const selectedMention = form.watch("mention");
+
+  // Mettre à jour les parcours disponibles lorsque la mention change
+  useEffect(() => {
+    if (
+      selectedMention &&
+      MENTIONS_PARCOURS[selectedMention as keyof typeof MENTIONS_PARCOURS]
+    ) {
+      setAvailableParcours(
+        MENTIONS_PARCOURS[selectedMention as keyof typeof MENTIONS_PARCOURS]
+      );
+
+      // Si le parcours actuel n'est pas dans la liste des parcours disponibles, le réinitialiser
+      const currentParcours = form.getValues("parcours");
+      if (
+        currentParcours &&
+        !MENTIONS_PARCOURS[
+          selectedMention as keyof typeof MENTIONS_PARCOURS
+        ].includes(currentParcours)
+      ) {
+        form.setValue("parcours", "");
+      }
+    } else {
+      setAvailableParcours([]);
+    }
+  }, [selectedMention, form]);
+
   const handleSubmit = (data: z.infer<typeof formSchema>) => {
     onSubmit(data);
     if (!isEditing) {
@@ -67,9 +101,19 @@ export function ClasseForm({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Mention</FormLabel>
-              <FormControl>
-                <Input placeholder="Ex: Informatique" {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Sélectionner une mention" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Intelligence Artificielle">
+                    Intelligence Artificielle
+                  </SelectItem>
+                  <SelectItem value="Informatique">Informatique</SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -81,9 +125,30 @@ export function ClasseForm({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Parcours</FormLabel>
-              <FormControl>
-                <Input placeholder="Ex: Développement Web" {...field} />
-              </FormControl>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                disabled={!selectedMention}
+              >
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue
+                      placeholder={
+                        selectedMention
+                          ? "Sélectionner un parcours"
+                          : "Sélectionnez d'abord une mention"
+                      }
+                    />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {availableParcours.map((parcours) => (
+                    <SelectItem key={parcours} value={parcours}>
+                      {parcours}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
